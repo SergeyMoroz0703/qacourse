@@ -49,3 +49,49 @@
 #         print('Error: {}! \nShould be the string inside!'.format(e))
 #
 # reverse('gay')
+
+#4. Define a function is_palindrome() that recognizes palindromes (i.e. words that look the same written backwards).
+#  For example, is_palindrome("radar") should return True.
+
+# def is_palindrome(data):
+#     i = 1
+#     checklist = []
+#     try:
+#         while i <= len(data):
+#             symbol = data[len(data)-i]
+#             checklist.append(symbol)
+#             i=i+1
+#     except TypeError as e:
+#         print('Error: {}! \nShould be the string inside!'.format(e))
+#     unword = ''.join(checklist)
+#     if data == unword:
+#         print(data + ' is palindrome')
+#         return True
+#     else:
+#         return False
+#
+# is_palindrome('radar')
+
+# 5. Define a procedure histogram() that takes a list of integers and prints a histogram to the screen.
+
+# def histogram(list):
+#     for i in list:
+#         if type(i) == int:
+#             print('*'*i)
+#
+# histogram([1,2,3,2,1])
+
+# 6.Define a function caesar_cipher that takes string and key(number), whuch returns encrypted string
+
+# def caesar_cipher(datastring, key):
+#     alphabet = 'abcdefghijklmnopqrstuvwxyz'
+#     result = ''
+#     for i in datastring:
+#         if i in alphabet:
+#             result = result + alphabet[alphabet.index(i)+key]
+#     print(result)
+#
+# caesar_cipher('abc', 1)
+
+# 7.define a function diaginal_reverse() that takes matrix and returns diagonal-reversed one:
+
