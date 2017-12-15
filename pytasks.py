@@ -123,15 +123,31 @@
 #Determine whether the generated string is balanced; that is, whether it consists entirely of pairs
 #  of opening/closing brackets (in that order), none of which mis-nest.
 
-def search_same(data):
-    result = ''
-    for i in data:
-        if str(i) == str(i)+1:
-            result = result + i
-    print(result)
-
-
-search_same('[][[[]][[]')
-
-
-
+# def determ(string):
+#     a = '['
+#     b = ']'
+#     num_a = 0
+#     num_b = 0
+#     for i in string:
+#         if i == a:
+#             num_a = num_a+1
+#         else:
+#             num_b = num_b+1
+#
+#     counter = 0
+#     if string[0] == a and string[len(string) - 1] == b and num_a == num_b:
+#         for i in string:
+#             if i == a:
+#                 counter = counter + 1
+#             else:
+#                 counter = counter -1
+#                 if counter < 0:
+#                     print('NO OK')
+#                     break
+#                 else:
+#                     pass
+#     print(counter)
+#     if counter >= 0:
+#         print('OK')
+#
+# determ('[][][[]][[[]]]')
