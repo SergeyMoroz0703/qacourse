@@ -95,3 +95,43 @@
 
 # 7.define a function diaginal_reverse() that takes matrix and returns diagonal-reversed one:
 
+#TODO 7 task
+
+#8. Write a function game() number-guessing game, that takes 2 int parameters defining the range.
+# Using random.randint(A, B) generate random int from the range.While user input isn't equal that number,
+# print "Try again!". If user guess the number, congratulate him and exit. (use raw_input())
+
+# import random
+#
+#
+# def game(start, finish):
+#     pc_cohice = random.randint(start, finish)
+#     #print(pc_cohice)
+#     user_choice = input('Please, enter the digit: ')
+#     try:
+#         if int(pc_cohice) == int(user_choice):
+#             print('You win!')
+#         else:
+#             print('Fucking shit, you lose. Come back later!')
+#     except ValueError:
+#         print('Please enter the valid integer number!')
+#         game(start,finish)
+#
+# game (3,7)
+
+#9.Define a function, which takes a string with N opening brackets ("[") and N closing brackets ("]"), in some arbitrary order.
+#Determine whether the generated string is balanced; that is, whether it consists entirely of pairs
+#  of opening/closing brackets (in that order), none of which mis-nest.
+
+def search_same(data):
+    result = ''
+    for i in data:
+        if str(i) == str(i)+1:
+            result = result + i
+    print(result)
+
+
+search_same('[][[[]][[]')
+
+
+
