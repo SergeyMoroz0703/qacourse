@@ -151,3 +151,16 @@
 #         print('OK')
 #
 # determ('[][][[]][[[]]]')
+
+# 10. Write a function char_freq() that takes a string and builds a frequency listing of the characters contained in it.
+# Represent the frequency listing as a Python dictionary. Try it with something like char_freq("abbabcbdbabdbdbabababcbcbab").
+
+
+# def char_freq(string):
+#     count_dict = {}
+#     for i in string:
+#         count_dict[i] = string.count(i)
+#     print(count_dict)
+#
+# char_freq('abcdddcbaaa4')
+
