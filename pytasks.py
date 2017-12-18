@@ -164,3 +164,39 @@
 #
 # char_freq('abcdddcbaaa4')
 
+#11. Write a function dec_to_bin() that takes decimal integer and outputs its binary representation.
+
+
+def dec_to_bin_rec(digit):
+    if digit >= 1:
+        dec_to_bin_rec(digit // 2)
+        number = int(digit % 2)
+        print(number, end='')
+    elif digit == 1:
+        print('1')
+
+
+
+dec_to_bin_rec(100)
+
+def dec_to_bin_v2(digit):
+    time_list = []
+    if digit == 1:
+        print('1')
+    else:
+        while digit >= 1:
+            number = digit % 2
+            #print(number)
+            time_list.append(str(number))
+            digit = digit // 2
+    print(''.join(time_list[::-1]))
+
+
+
+
+
+dec_to_bin_v2(100)
+
+
+
+
