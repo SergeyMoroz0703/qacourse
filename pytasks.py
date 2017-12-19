@@ -202,41 +202,42 @@
 # (tip: use var1, var2 = raw_input("Enter two numbers here: ").split())
 # *Visualize the game.
 
-import random
-
-
-def ship(digit):
-    new_matrix = [['*' for y in range(digit)] for z in range(digit)]
-    matrix = [['*' for y in range(digit)] for z in range(digit)]
-    print('Lets START. This is your field!')
-    for i in matrix:
-        print(i)
-
-    x = random.randrange(1,digit+1)
-    y = random.randrange(1,digit+1)
-    print(x,y)
-    pc_matrix = matrix
-    pc_matrix[x-1][y-1] = 'X'
-    print('Compute made his choice...')
-
-
-    x_u, y_u = input('Please enter two index kill pc machine?! ').split(' ')
-    i = True
-    while i:#int(x) != int(x_u) and int(y) != int(y_u):
-        new_matrix[int(x_u) - 1][int(y_u) - 1] = '-'
-        for i in new_matrix:
-            print(i)
-        x_u, y_u = input('Please try again: ').split(' ')
-
-        if int(x) == int(x_u) and int(y) == int(y_u):
-            pc_matrix[x - 1][y - 1] = 'bah!'
-            print('You win!')
-            for i in pc_matrix:
-                print(i)
-            i = False
-
-
-
-
-ship(3)
+# import random
+# #
+# #
+# def ship(digit):
+#
+#     new_matrix = [['*' for y in range(digit)] for z in range(digit)]
+#     matrix = [['*' for y in range(digit)] for z in range(digit)]
+#     print('Lets START. This is your field!')
+#     for i in matrix:
+#         print(i)
+#
+#     x = random.randrange(1,digit+1)
+#     y = random.randrange(1,digit+1)
+#     print(x,y)
+#     pc_matrix = matrix
+#     pc_matrix[x-1][y-1] = 'X'
+#     print('Compute made his choice...')
+#
+#
+#     x_u, y_u = input('Please enter two index kill pc machine?! ').split(' ')
+#     i = True
+#     while i:#int(x) != int(x_u) and int(y) != int(y_u):
+#         new_matrix[int(x_u) - 1][int(y_u) - 1] = '-'
+#         for i in new_matrix:
+#             print(i)
+#         x_u, y_u = input('Please try again: ').split(' ')
+#
+#         if int(x) == int(x_u) and int(y) == int(y_u):
+#             pc_matrix[x - 1][y - 1] = 'bah!'
+#             print('You win!')
+#             for i in pc_matrix:
+#                 print(i)
+#             i = False
+#
+#
+#
+#
+# ship(3)
 
