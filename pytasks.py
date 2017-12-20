@@ -1,36 +1,39 @@
 # 1. Define a function, that takes string as argument and prints "Heelo, %arg%!"
 
-# def greet(name):
-#     if len(name) > 0 and type(name) == str:
-#         print('Hello {}!'.format(name))
-# greet('Mentor')
+def greet(name):
+    if len(name) > 0 and type(name) == str:
+        return ('Hello {}!'.format(name))
+    else:
+        return ('Argument should be a string with len > 0')
+
+
 
 #2.Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in a list
 #  of numbers. For example, sum([1, 2, 3, 4]) should return 10, and multiply([1, 2, 3, 4]) should return 24.
 
-# def sum(list):
-#     summa = 0
-#     try:
-#         for i in list:
-#             summa = summa + i
-#         print(summa)
-#         return summa
-#     except TypeError:
-#         print('Just digit should be in list')
-#
-# def multiply(list):
-#     mult = 1
-#     for i in list:
-#         if i == 0:
-#             print (i)
-#             return i
-#         else:
-#             mult = mult * i
-#     print(mult)
-#     return mult
-#
-# sum([1,2,3,4])
-# multiply([1,2,3,4])
+def sum(list):
+    summa = 0
+    try:
+        for i in list:
+            summa = summa + i
+        return summa
+    except TypeError:
+        return ('Just digit should be in list')
+
+def multiply(list):
+    mult = 1
+    for i in list:
+        if i == 0:
+            return i
+        else:
+            if type(i) != str:
+                mult = mult * i
+            else:
+                return ('Just digit should be in list')
+
+    return mult
+
+
 
 
 #3.Define a function reverse() that computes the reversal of a string. For example, reverse("I am testing") should return
@@ -241,3 +244,9 @@
 #
 # ship(3)
 
+#Task_1
+#print(greet('Mentor'))
+
+#Task_2
+# print(sum([1,0,2]))
+# print(multiply([1,2,1]))

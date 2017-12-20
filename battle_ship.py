@@ -6,7 +6,7 @@ try:
 except:
     print('Enter a valid integer number')
     DIGIT = int(input('Please enter the matrix order'))
-
+#' ⛵ '
 def make_field():
 
     matrix = [[' ⛵ ' for y in range(DIGIT)] for z in range(DIGIT)]
