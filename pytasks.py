@@ -39,62 +39,68 @@ def multiply(list):
 #3.Define a function reverse() that computes the reversal of a string. For example, reverse("I am testing") should return
 # the string "gnitset ma I".
 
-# def reverse(data):
-#     i=1
-#     checklist = []
-#     try:
-#         while i <= len(data):
-#             symbol = data[len(data)-i]
-#             checklist.append(symbol)
-#             i=i+1
-#         print(''.join(checklist))
-#     except TypeError as e:
-#         print('Error: {}! \nShould be the string inside!'.format(e))
-#
-# reverse('gay')
+def reverse(data):
+    i=1
+    result = []
+    try:
+        while i <= len(data):
+            symbol = data[len(data)-i]
+            result.append(symbol)
+            i=i+1
+        return (''.join(result))
+    except TypeError as e:
+        return ('Error: {}! \nShould be the string inside!'.format(e))
+
 
 #4. Define a function is_palindrome() that recognizes palindromes (i.e. words that look the same written backwards).
 #  For example, is_palindrome("radar") should return True.
 
-# def is_palindrome(data):
-#     i = 1
-#     checklist = []
-#     try:
-#         while i <= len(data):
-#             symbol = data[len(data)-i]
-#             checklist.append(symbol)
-#             i=i+1
-#     except TypeError as e:
-#         print('Error: {}! \nShould be the string inside!'.format(e))
-#     unword = ''.join(checklist)
-#     if data == unword:
-#         print(data + ' is palindrome')
-#         return True
-#     else:
-#         return False
-#
-# is_palindrome('radar')
+def is_palindrome(data):
+    i = 1
+    checklist = []
+    try:
+        while i <= len(data):
+            symbol = data[len(data)-i]
+            checklist.append(symbol)
+            i=i+1
+    except TypeError as e:
+        return ('Error: {}! \nShould be the string inside!'.format(e))
+    unword = ''.join(checklist)
+    if data == unword:
+        return True
+    else:
+        return False
+
+
 
 # 5. Define a procedure histogram() that takes a list of integers and prints a histogram to the screen.
 
-# def histogram(list):
-#     for i in list:
-#         if type(i) == int:
-#             print('*'*i)
-#
-# histogram([1,2,3,2,1])
+def histogram(data):
+    if type(data) == list and len(data) > 0:
+        for i in data:
+            data[data.index(i)] = i*'*'+'\n'
+        a = ''
+        for i in data:
+            a = a+i
+        return a
+    else:
+        return ('Argument should be a list with len>0')
+
+
+
 
 # 6.Define a function caesar_cipher that takes string and key(number), whuch returns encrypted string
 
-# def caesar_cipher(datastring, key):
-#     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-#     result = ''
-#     for i in datastring:
-#         if i in alphabet:
-#             result = result + alphabet[alphabet.index(i)+key]
-#     print(result)
-#
-# caesar_cipher('abc', 1)
+def caesar_cipher(datastring, key):
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    new_alph = alphabet[key:] + alphabet[:key]
+    result = ''
+    for i in datastring:
+        result = result + new_alph[alphabet.index(i)]
+
+    return (result)
+
+
 
 # 7.define a function diaginal_reverse() that takes matrix and returns diagonal-reversed one:
 
@@ -250,3 +256,19 @@ def multiply(list):
 #Task_2
 # print(sum([1,0,2]))
 # print(multiply([1,2,1]))
+
+#Task_3
+#print(reverse('Mentor'))
+
+#Task_4
+#print(is_palindrome('radar'))
+
+#Task_5
+
+# print(histogram([1,2,3]))
+
+#Task_6
+
+print(caesar_cipher('xyz', 25))
+
+
