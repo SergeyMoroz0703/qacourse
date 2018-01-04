@@ -1,10 +1,15 @@
 
 class Department():
-    def __init__(self, managers_list):
+    def __init__(self, managers_list=None):
         self.managers = managers_list
 
-    def give_salary(self):
-        pass
+    def get_manager_list(self):
+
+        return ('There are {num} managers. {list}'.format(num = Manager.numOfInstances, list = Manager.managers_list))
+
+
+
+
 
 
 
@@ -16,8 +21,9 @@ class Employee():
         self.salary = salary
         self.exp = exp
         self.manager = manager
-        # if self.manager is not None:
-        #     Manager.add_team(self)
+
+        if self.manager is not None:
+            self.manager.add_team(self.first_name)
 
     def get_salary(self):
         salary = self.salary
@@ -26,10 +32,6 @@ class Employee():
         elif self.exp > 5:
             salary = (salary*1.2) + 500
         return salary
-
-
-
-
 
 
 
@@ -59,17 +61,26 @@ class Designer(Employee):
 
 
 class Manager(Employee):
+    numOfInstances = 0
+    managers_list = []
+    def countInstances(cls):
+        cls.numOfInstances += 1
+    countInstances = classmethod(countInstances)
+
+
     def __init__(self, first_name, second_name, salary, exp, team):
         super().__init__(first_name, second_name, salary, exp, manager=None)
         self.team = team
+        self.countInstances()
+        self.manager = [self.first_name, self.second_name, self.salary, self.exp]
+        self.managers_list.append(self.manager)
+
 
     def get_team(self):
         return self.team
 
     def add_team(self, member):
         self.team.append(member)
-
-
 
     def get_salary(self):
         devs = self.check_team()[0]
@@ -100,24 +111,18 @@ class Manager(Employee):
 
 
 
-
+Department = Department()
 Manager1 = Manager('ManagerName1', 'ManagerSurname1', 100, 2, [])
+Manager2 = Manager('ManagerName2', 'ManagerSurname2', 100, 2, [])
+Manager3 = Manager('ManagerName3', 'ManagerSurname3', 100, 2, [])
+Manager4 = Manager('ManagerName4', 'ManagerSurname4', 100, 2, [])
 
 
 Designer1 = Designer('DesName1', 'DesSurname1', 100, 2, Manager1, 0.5)
 Designer2 = Designer('DesName2', 'DesSurname2', 100, 2, Manager1, 1)
 
-Manager1.add_team(Designer1)
-Manager1.add_team(Designer2)
+print(Manager1.get_team())
 
-
-print(Manager1.salary)
-
-
-
-
-
-
-
+print(Department.get_manager_list())
 
 
