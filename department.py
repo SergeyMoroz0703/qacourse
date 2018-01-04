@@ -16,8 +16,8 @@ class Employee():
         self.salary = salary
         self.exp = exp
         self.manager = manager
-        if self.manager is not None:
-            Manager.add_team(self)
+        # if self.manager is not None:
+        #     Manager.add_team(self)
 
     def get_salary(self):
         salary = self.salary
@@ -63,6 +63,8 @@ class Manager(Employee):
         super().__init__(first_name, second_name, salary, exp, manager=None)
         self.team = team
 
+    def get_team(self):
+        return self.team
 
     def add_team(self, member):
         self.team.append(member)
@@ -70,22 +72,30 @@ class Manager(Employee):
 
 
     def get_salary(self):
+        devs = self.check_team()[0]
+        des = self.check_team()[1]
+
         if len(self.team) > 5 and len(self.team) <= 10:
-            salary=super().salary + 200
+            if devs > des:
+                salary=(super().salary + 200) * 1.1
+            else:
+                salary = super().salary + 200
         elif len(self.team) > 10:
-            salary=super().salary + 300
+            if devs > des:
+                salary=(super().salary + 300) * 1.1
+            else:
+                salary = super().salary + 300 * 1.1
 
 
-    def check_team(self,team):
+    def check_team(self):
         count_dev = 0
         count_des = 0
-        for i in team:
+        for i in self.get_team():
             if isinstance(i, Designer):
                 count_des = count_des + 1
-                return count_des
             elif isinstance(i, Developer):
                 count_dev = count_dev + 1
-                return count_dev
+        return [count_dev, count_des]
 
 
 
@@ -99,16 +109,14 @@ Designer2 = Designer('DesName2', 'DesSurname2', 100, 2, Manager1, 1)
 
 Manager1.add_team(Designer1)
 Manager1.add_team(Designer2)
-print(Manager1.team)
+
+
+print(Manager1.salary)
 
 
 
 
-# print(Designer1.get_salary())
-#
-# if Designer1.__class__ == Developer:
-#     print('yes')
-#print(Jack.salary)
+
 
 
 
