@@ -4,8 +4,22 @@ class Department():
         self.managers = managers_list
 
     def get_manager_list(self):
+        managers_name = []
+        for i in Manager.all_managers:
+            managers_name.append(i.first_name)
 
-        return ('There are {num} managers. {list}'.format(num = Manager.numOfInstances, list = Manager.managers_list))
+        return ('There are {num} managers. {list}'.format(num = Manager.numOfInstances, list = managers_name))
+
+    def salary_msg(self):
+        all_employee = Employee.all_employee
+        print('\n' + 'There are all salaries:')
+        for i in all_employee:
+            print (i.first_name, i.second_name, i.salary)
+
+    def manager_team_msg(self):
+        print('\n' + 'There are lists of team of every manager')
+        for i in Manager.all_managers:
+            print(i.first_name, i.second_name, i.team)
 
 
 
@@ -15,15 +29,18 @@ class Department():
 
 
 class Employee():
+    all_employee = []
     def __init__(self, first_name, second_name, salary, exp, manager):
         self.first_name = first_name
         self.second_name = second_name
         self.salary = salary
         self.exp = exp
         self.manager = manager
-
+        self.all_employee.append(self)
         if self.manager is not None:
             self.manager.add_team(self.first_name)
+
+
 
     def get_salary(self):
         salary = self.salary
@@ -46,14 +63,15 @@ class Designer(Employee):
         super().__init__(first_name, second_name, salary, exp, manager)
         if effictivness >=0 and effictivness <= 1:
             self.effictivness = effictivness
+            self.get_salary()
         else:
             self.err_msg()
 
 
 
     def get_salary(self):
-        salary = super().get_salary() *  self.effictivness
-        return salary
+        self.salary = super().get_salary() *  self.effictivness
+        return self.salary
 
     def err_msg(self):
         return 'Effictivness should be in range 0-1'
@@ -61,8 +79,10 @@ class Designer(Employee):
 
 
 class Manager(Employee):
+
+    all_managers = []        #list of all Managers object
     numOfInstances = 0
-    managers_list = []
+
     def countInstances(cls):
         cls.numOfInstances += 1
     countInstances = classmethod(countInstances)
@@ -73,11 +93,7 @@ class Manager(Employee):
         self.team = team
         self.countInstances()
         self.manager = [self.first_name, self.second_name, self.salary, self.exp]
-        self.managers_list.append(self.manager)
-
-
-    def get_team(self):
-        return self.team
+        self.all_managers.append(self)
 
     def add_team(self, member):
         self.team.append(member)
@@ -88,20 +104,20 @@ class Manager(Employee):
 
         if len(self.team) > 5 and len(self.team) <= 10:
             if devs > des:
-                salary=(super().salary + 200) * 1.1
+                self.salary=(super().salary + 200) * 1.1
             else:
-                salary = super().salary + 200
+                self.salary = super().salary + 200
         elif len(self.team) > 10:
             if devs > des:
-                salary=(super().salary + 300) * 1.1
+                self.salary=(super().salary + 300) * 1.1
             else:
-                salary = super().salary + 300 * 1.1
+                self.salary = super().salary + 300 * 1.1
 
 
     def check_team(self):
         count_dev = 0
         count_des = 0
-        for i in self.get_team():
+        for i in self.team:
             if isinstance(i, Designer):
                 count_des = count_des + 1
             elif isinstance(i, Developer):
@@ -118,11 +134,13 @@ Manager3 = Manager('ManagerName3', 'ManagerSurname3', 100, 2, [])
 Manager4 = Manager('ManagerName4', 'ManagerSurname4', 100, 2, [])
 
 
-Designer1 = Designer('DesName1', 'DesSurname1', 100, 2, Manager1, 0.5)
-Designer2 = Designer('DesName2', 'DesSurname2', 100, 2, Manager1, 1)
+Designer1 = Designer('DesName1', 'DesSurname1', 300, 2, Manager1, 0.5)
+Designer2 = Designer('DesName2', 'DesSurname2', 300, 2, Manager1, 1)
 
-print(Manager1.get_team())
 
 print(Department.get_manager_list())
+Department.salary_msg()
+Department.manager_team_msg()
+print(Manager.all_managers)
 
 
